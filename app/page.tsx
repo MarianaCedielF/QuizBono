@@ -3,7 +3,12 @@ import PropertyCard from "@/components/propertyCard";
 import { Property } from "@/lib/types";
 
 export default function HomePage() {
-  const typedProperties = properties as Property[];
+  const typedProperties = (properties as Omit<Property, "id">[]).map(
+    (property, index) => ({
+      ...property,
+      id: index + 1,
+    })
+  );
 
   return (
     <main className="container">

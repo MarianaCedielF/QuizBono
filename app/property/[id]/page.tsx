@@ -1,8 +1,10 @@
 import properties from "@/data/properties.json";
-import { Property } from "@/lib/types";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import PropertyDetail from "@/components/propertyDetail";
+import { Property } from "@/lib/types";
+
+type RawProperty = Omit<Property, "id">;
 
 type PageProps = {
   params: {
@@ -11,7 +13,12 @@ type PageProps = {
 };
 
 export default function PropertyDetailPage({ params }: PageProps) {
-  const typedProperties = properties as Property[];
+  const typedProperties: Property[] = (properties as RawProperty[]).map(
+    (property, index) => ({
+      ...property,
+      id: index + 1,
+    })
+  );
 
   const property = typedProperties.find(
     (item) => item.id === Number(params.id)
