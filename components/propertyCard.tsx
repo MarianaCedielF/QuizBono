@@ -14,9 +14,9 @@ export default function PropertyCard({ property }: PropertyCardProps) {
         <p className="price">{property.price}</p>
 
         <div className="property-info">
-          <span>🛏 {property.rooms} rooms</span>
-          <span>🛁 {property.baths} baths</span>
-          <span>{property.garage ? "🚗 Garage" : "❌ No garage"}</span>
+          <span>{property.rooms} rooms</span>
+          <span>{property.baths} baths</span>
+          <span>{property.garage ? "Garage" : "No garage"}</span>
         </div>
 
         <p className="address">{property.address}</p>
